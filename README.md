@@ -4,7 +4,7 @@
 
 ### To install
 ```
-git clone https://github.com/Ben-893/Todos-List
+git clone https://github.com/Ben-893/Todos-App
 ```
 ### To Use
 
