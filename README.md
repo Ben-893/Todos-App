@@ -16,5 +16,5 @@ git clone https://github.com/Ben-893/Todos-App
 - HTML
 - CSS
 
-### Further improvemnts to follow...
+### Further improvements to follow...
 
