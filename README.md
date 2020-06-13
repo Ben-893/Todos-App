@@ -4,7 +4,7 @@
 
 ### To install
 ```
-git clone https://github.com/Ben-893/Todos-App
+git clone https://github.com/Ben-893/Todos-List
 ```
 ### To Use
 
@@ -16,5 +16,5 @@ git clone https://github.com/Ben-893/Todos-App
 - HTML
 - CSS
 
-### Further improvements to follow...
+### Further improvemnts to follow...
 
