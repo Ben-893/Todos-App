@@ -56,3 +56,14 @@ let todoList = {
     this.displayTodos();
   }
 };
+
+let displayTodosButton = document.getElementById('displayTodosButton'); //Connected the 'displayTodosButton' button from todoList.html to the 'displayTodos' function.
+let toggleAllButton = document.getElementById('toggleAllButton'); //Connected the 'toggleAllButton' button from todoList.html to the 'toggleAll' function.
+
+displayTodosButton.addEventListener('click', () => { //Added an eventListener to listen for mouse clicks, and to trigger the 'displayTodos' method on click.
+  todoList.displayTodos();
+});
+
+toggleAllButton.addEventListener('click', () => { //Added an eventListener to listen for mouse clicks, and to trigger the 'toggleAll' method on click.
+  todoList.toggleAll();
+});
