@@ -57,13 +57,37 @@ let todoList = {
   }
 };
 
-let displayTodosButton = document.getElementById('displayTodosButton'); //Connected the 'displayTodosButton' button from todoList.html to the 'displayTodos' function.
-let toggleAllButton = document.getElementById('toggleAllButton'); //Connected the 'toggleAllButton' button from todoList.html to the 'toggleAll' function.
+let handlers = {
+  displayTodos: () => {                                  
+    todoList.displayTodos();
+  },
+  addTodo: () => {
+    let addTodoTextInput = document.getElementById('addTodoTextInput');
+    todoList.addTodo(addTodoTextInput.value);
+    addTodoTextInput.value = '';
+  },
+  changeTodo: () => {
+    let changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
+    let changeTodoTextInput = document.getElementById('changeTodoTextInput');
+    todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value)
+    changeTodoPositionInput.value = '';
+    changeTodoTextInput.value = '';
+  },
+  deleteTodo: () => {
+    let deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
+    todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+    deleteTodoPositionInput.value = ''
+  },
+  toggleCompleted: () => {
+    let toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
+    todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
+    toggleCompletedPositionInput.value = ''
+  },
+  toggleAll: () => {
+    todoList.toggleAll();
+  }
+};
 
-displayTodosButton.addEventListener('click', () => { //Added an eventListener to listen for mouse clicks, and to trigger the 'displayTodos' method on click.
-  todoList.displayTodos();
-});
-
-toggleAllButton.addEventListener('click', () => { //Added an eventListener to listen for mouse clicks, and to trigger the 'toggleAll' method on click.
-  todoList.toggleAll();
-});
+/* Refacored the code that was handling the buttons, and created a 'handlers' object
+   to hold the 'todolist' functions so my html buttons 
+   can have access to them. */

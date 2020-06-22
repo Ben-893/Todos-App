@@ -7,9 +7,34 @@
   </head>
   <body>
     <h1>Todo List</h1>
-    <button id='displayTodosButton'>Display Todos</button> <!--Added an H1 tag, and 2 buttons -->
-    <button id='toggleAllButton'>Toggle All</button>
-    <main></main>
+    
+    <div>
+      <button onclick='handlers.displayTodos()'>Display Todos</button> <!--Removed the ids from the buttons, and instead added an 'onclick' attribute to them simplify the code. Also added several input tags and put the ids in there-->
+      <button onclick='handlers.toggleAll()'>Toggle All</button>
+    </div>
+    
+    <div>
+      <button onclick='handlers.addTodo()'>Add</button>
+      <input id='addTodoTextInput' type='text'>
+    </div>
+
+    <div>
+      <button onclick='handlers.changeTodo()'>Change Todo</button>
+      <input id='changeTodoPositionInput' type='number'>
+      <input id='changeTodoTextInput' type='text'>
+    </div>
+
+    <div>
+      <button onclick='handlers.deleteTodo()'>Delete</button>
+      <input id='deleteTodoPositionInput' type='number'>
+    </div>
+
+    <div>
+      <button onclick='handlers.toggleCompleted()'>Toggle Completed</button>
+      <input id='toggleCompletedPositionInput' type="number">
+    </div>
+    
+    
     <script src="js/app.js"></script>
   </body>
 </html>
