@@ -7,9 +7,8 @@
 git clone https://github.com/Ben-893/Todos-App
 ```
 ### To Use
-
 - Open the 'todoList.html' file in the browser. 
-- Then open up the console, and from there you can access the current list of todos and apply the various methods contained within 'app.js' to manipulate the list.
+- From the webpage, you can use the buttons and fields to **add** a todo, **change** a todo by index, **toggle a todo** as completed, or **toggle all**. 
 
 ### Technologies used
 - JavaScript 
