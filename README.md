@@ -8,7 +8,7 @@ git clone https://github.com/Ben-893/Todos-App
 ```
 ### To Use
 - Open the 'todoList.html' file in the browser. 
-- From the webpage, you can use the buttons and fields to **add** a todo, **change** a todo by index, **toggle a todo** as completed, or **toggle all**. 
+- From the webpage, you can use the buttons and fields to **add** a todo, **change** a todo by index, **delete** a todo, **toggle a todo** as completed, or **toggle all** todos. 
 
 ### Technologies used
 - JavaScript 
