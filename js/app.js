@@ -53,10 +53,8 @@ let handlers = {
     changeTodoTextInput.value = '';
     view.displayTodos();
   },
-  deleteTodo: () => {
-    let deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
-    todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
-    deleteTodoPositionInput.value = ''
+  deleteTodo: (position) => { //Refactored the deleteTodo method by removing 2 lines, and giving the method a paramater of 'position'.
+    todoList.deleteTodo(position);
     view.displayTodos();
   },
   toggleCompleted: () => {
@@ -71,8 +69,8 @@ let handlers = {
   }
 };
 
-let view = {  //Created a view object to render the todo list to the webpage in the form of bullet points, rather than the console.
-  displayTodos: () => {     //removed the original 'displayTodos' method from the top of the code, and instead put an updated version of the method into the 'view' object.
+let view = {
+  displayTodos: function() {
     let todosUl = document.querySelector('ul');
     todosUl.innerHTML = '';
     for (let i = 0; i < todoList.todos.length; i++) {
@@ -86,8 +84,30 @@ let view = {  //Created a view object to render the todo list to the webpage in 
         todoTextWithCompletion = `( ) ${todo.todoText}`;
       }
 
+      todoLi.id = i; //Assigns each element of the 'todos' array an id equivalent to it's position in the array.
       todoLi.textContent = todoTextWithCompletion;
-      todosUl.appendChild(todoLi);
+      todoLi.appendChild(this.createDeleteButton()); //Assigns the 'createDeleteButton' element to each '<li>' tag created by 'todoLi'.
+      todosUl.appendChild(todoLi); //Adds an '<li>' tag within the '<ul>' tags whenever one is created.
     }
+  },
+  createDeleteButton: function() {  //Added a 'createDeleteButton' property which creates a button element and assigns it a class of 'deleteButton'.
+    let deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.className = 'deleteButton';
+    return deleteButton;
+  },
+  setUpEventListeners: function() {
+    let todosUl = document.querySelector('ul'); //Created a new 'todosUl' variable to store a reference to the '<ul>' tags.
+
+    todosUl.addEventListener('click', (event) => { //Added an event listener on the '<ul>' tags.
+
+      let elementClicked = event.target; //Assigned the 'target' (deleteButton) to a new variable 'elementClicked'.
+
+      if (elementClicked.className === 'deleteButton') { //If the element that's clicked on's className is equal to 'deleteButton', run the 'handlers.deleteTodo' function on it, and delete the whole '<li>' tag.
+        handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+      }
+    });
   }
 };
+
+view.setUpEventListeners(); //Calls the 'setUpEventListeners' method in the global scope.
