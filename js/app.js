@@ -20,23 +20,22 @@ let todoList = {
   toggleAll: function() {
     let totalTodos = this.todos.length;
     let completedTodos = 0;
-    //Get the number of completed todos.
-    for (let i = 0; i < totalTodos; i++) {
-      if (this.todos[i].completed === true) {
+    
+    this.todos.forEach(function(todo) { //Get the number of completed todos.
+      if (todo.completed === true) { //Refactored the 'toggelAll' method with 'forEach' methods for iteration, rather than using 'for' loops.
         completedTodos++;
       }
+    });
+
+    this.todos.forEach(function(todo) { //If everything's true mark it false, otherwise mark everything true.
+      if (completedTodos === totalTodos) {
+        todo.completed = false;
+      } else {
+        todo.completed = true;
+        }
+      });
     }
-    // If everything's true, make everything false.
-    if (completedTodos === totalTodos) {
-      for (let i = 0; i < totalTodos; i++) {
-        this.todos[i].completed = false;
-      }
-    } else { //Otherwise, make everything true.
-      for (let i = 0; i < totalTodos; i++)
-        this.todos[i].completed = true;
-    }
-  }
-};
+  };
 
 let handlers = {
   addTodo: () => {
@@ -73,9 +72,9 @@ let view = {
   displayTodos: function() {
     let todosUl = document.querySelector('ul');
     todosUl.innerHTML = '';
-    for (let i = 0; i < todoList.todos.length; i++) {
+
+    todoList.todos.forEach(function(todo, position) {  //Replaced the original 'for' loop with a 'forEach' method.
       let todoLi = document.createElement('li');
-      let todo = todoList.todos[i];
       let todoTextWithCompletion = '';
       
       if (todo.completed === true) {
@@ -84,11 +83,11 @@ let view = {
         todoTextWithCompletion = `( ) ${todo.todoText}`;
       }
 
-      todoLi.id = i; //Assigns each element of the 'todos' array an id equivalent to it's position in the array.
+      todoLi.id = position; //Assigns each element of the 'todos' array an id equivalent to it's position in the array.
       todoLi.textContent = todoTextWithCompletion;
       todoLi.appendChild(this.createDeleteButton()); //Assigns the 'createDeleteButton' element to each '<li>' tag created by 'todoLi'.
-      todosUl.appendChild(todoLi); //Adds an '<li>' tag within the '<ul>' tags whenever one is created.
-    }
+      todosUl.appendChild(todoLi);
+    }, this); //Needed to add the 'this' keyword here to get the 'this' inside the callback function to refer to the 'view' object.
   },
   createDeleteButton: function() {  //Added a 'createDeleteButton' property which creates a button element and assigns it a class of 'deleteButton'.
     let deleteButton = document.createElement('button');

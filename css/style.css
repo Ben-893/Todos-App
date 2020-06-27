@@ -3,7 +3,7 @@ body {
     color: black;
     font-family: "Gotham Rounded A", "Gotham Rounded B", "Gotham Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
     box-sizing: border-box;
-    background-color: white;
+    background-color: #00eeff;
   }
   
   main {
@@ -15,7 +15,7 @@ body {
   
   h1 {
     font-size: 3.75em;
-  }
+    font-style: italic;
   
   h2 {
     font-size: 2.25em;
@@ -31,5 +31,5 @@ body {
     width: 200px;
     font-size: 1em;
     border: none;
-    padding: 1em;
+    padding: 0em;
   }
