@@ -1,6 +1,5 @@
 # Todo's List
-
-## This is my first big project in JavaScript. The goal is to build a Todos app that eventually works on the webpage using a variety of different techniques I've learnt so far.
+This is my first big project in JavaScript. The goal is to build a Todos app that eventually works on the webpage using a variety of different techniques I've learnt so far.
 
 ### To install
 ```
